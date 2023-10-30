@@ -1,0 +1,416 @@
+
+{% load static %}
+
+{% block head %}
+ <head>
+        <meta charset="utf-8" />
+         <title>iCare Admin</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="A fully featured admin panel for FAMA." name="description" />
+        <meta content="Coderthemes" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <!-- App favicon 
+        <link rel="shortcut icon" href="{% static '/dashboard/images/favicon.ico' %}">-->
+
+        <!-- plugins -->
+        <link href="{% static '/dashboard/libs/flatpickr/flatpickr.min.css' %}" rel="stylesheet" type="text/css" />
+
+        <!-- App css -->
+        <link href="{% static '/dashboard/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static '/dashboard/css/icons.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static '/dashboard/css/app.min.css' %}" rel="stylesheet" type="text/css" />
+        <style>
+#adddev {
+  position: absolute;
+  z-index: 1;
+  right: 100px;
+   
+}
+#sub_table  {
+  
+    border-collapse: collapse;
+    margin-left: 20em;
+    margin-top: -91.8px;
+}
+#main_table  {
+  
+    border-collapse: collapse;
+    
+}
+.headt{
+background-color: rgb(228, 224, 233);
+width:200px;
+height:20px;
+font-size: 14px;
+color:rgb(71, 17, 170);
+padding:25px;
+text-decoration:none;
+text-align: center;
+border-radius:10px; 
+}
+.bodyt{
+background-color: rgb(254, 255, 255);
+width:150px;
+height:20px;
+font-size: 13px;
+color:rgb(71, 17, 170);
+padding:8px;
+text-decoration:none;
+text-align: center;
+border-radius:10px; 
+
+}
+.click{
+background-color: blueviolet;
+width:50px;
+height:10px;
+font-size: 14px;
+color:white;
+padding:10px;
+text-decoration:none;
+border-radius:10px;
+}
+.headt-h{
+    background-color: rgb(243 244 247);
+width:200px;
+height:20px;
+font-size: 14px;
+color:rgb(71, 17, 170);
+padding:25px;
+text-decoration:none;
+text-align: center;
+border-radius:10px; 
+}
+
+        </style>
+
+    </head>
+{% endblock head %}
+             <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+{% block content %}
+            <div class="content-page">
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="row page-title align-items-center">
+                            <div class="col-sm-4 col-xl-6">
+                                <table id="main_table"cellspacing="150">
+                                    <thead>
+                                        <tr>
+                                           <th><h4 class="headt"><B>Tables</B></h4></th>
+                                           
+                                           <!--<th><h4 class="headt"><B>Distributor Name</B></a></h4></th>
+                                           <th><h4 class="headt"><B>Distributor Address</B></a></h4></th>-->
+                                        
+                                            
+                                           
+                                        </tr>
+                                       
+                                      </thead>
+                                     
+                                      
+                                  </table>
+
+                            </div>
+                            <!--<div>
+                                <a class="click"href="/get_list">Add Device+</a>
+                            </div>-->
+                            <div class="col-sm-8 col-xl-6">
+                                <form class="form-inline float-sm-right mt-3 mt-sm-0">
+<!--                                    <div class="form-group mb-sm-0 mr-2">-->
+<!--                                        <input type="text" class="form-control" id="dash-daterange" style="min-width: 190px;" />-->
+<!--                                    </div>-->
+                                    <div class="btn-group">
+<!--                                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"-->
+<!--                                            aria-haspopup="true" aria-expanded="false">-->
+<!--                                            <i class='uil uil-file-alt mr-1'></i>Download-->
+<!--                                            <i class="icon"><span data-feather="chevron-down"></span></i></button>-->
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a href="#" class="dropdown-item notify-item">
+                                                <i data-feather="mail" class="icon-dual icon-xs mr-2"></i>
+                                                <span>Email</span>
+                                            </a>
+                                            <a href="#" class="dropdown-item notify-item">
+                                                <i data-feather="printer" class="icon-dual icon-xs mr-2"></i>
+                                                <span>Print</span>
+                                            </a>
+                                            <div class="dropdown-divider"></div>
+                                            <a href="#" class="dropdown-item notify-item">
+                                                <i data-feather="file" class="icon-dual icon-xs mr-2"></i>
+                                                <span>Re-Generate</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- content -->
+                        <div class="row">
+                            <div class="col-md-6 col-xl-3">
+                                <!-- <div class="card">
+                                    <div class="card-body p-0">
+                                        <div class="media p-3">
+                                            <div class="media-body"> -->
+                                                
+                                               <p> <table id="sub_table"cellspacing="150">
+                                                    <thead>
+                                                        <tr>
+                                                           <th><h4 class="headt"><B><a href = "/tables">Create Table</a></B></h4></th>
+                                                           <th><h4 class="headt"><B>Query section</B></h4></th>
+                                                           
+                                                           <!--<th><h4 class="headt"><B>Distributor Name</B></a></h4></th>
+                                                           <th><h4 class="headt"><B>Distributor Address</B></a></h4></th>-->
+                                                        
+                                                            
+                                                           
+                                                        </tr>
+                                                       
+                                                      </thead>
+                                                      {% for i in devicelist %}
+                                                      <tbody>
+                                                        <tr>
+                                                        <td class="bodyt"><a href="#">{{i.id}}</a></td>
+
+                                                        <td class="bodyt">{{i.Device_sl_no}}</td>
+                                                        <td class="bodyt">{{i.Home_name}}</td>
+                                                        <td class="bodyt"><a class="click"href="#">Request for Service..</a></td>
+                                                        
+                                                        <!--<td class="bodyt">{{i.Distributor_Name}}</td>
+
+                                                        <td class="bodyt">{{i.Distributor_Address}}</td>-->
+
+                                                            
+                                                        
+                                                        
+                                                           
+                                                        </tr>
+                                                      </tbody>
+                                                      {% endfor %}
+                                                  </table>
+                                                </p>
+                                              
+                                                
+                                            </div>
+                                            <!--div class="align-self-center">
+                                                <div id="today-revenue-chart" class="apex-charts"></div>
+                                                <span class="text-success font-weight-bold font-size-13"><i
+                                                        class='uil uil-arrow-up'></i> 10.21%</span>
+                                            </div-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    
+
+                            <!--<div class="col-md-6 col-xl-3">
+                                <div class="card">
+                                    <div class="card-body p-0">
+                                        <div class="media p-3">
+                                            <div class="media-body">
+                                                <span class="text-muted text-uppercase font-size-12 font-weight-bold">Distributers</span>
+                                                <h4 class="mb-0">{{opentask}}</h4>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>-->
+                            </div>
+
+                          
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                         
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                       
+                                                </tbody>
+                                            </table>
+                                        </div> <!-- end table-responsive-->
+                                    </div> <!-- end card-body-->
+                                </div> <!-- end card-->
+                            </div> <!-- end col-->
+                        </div>
+                       
+
+                    </div>
+                </div> <!-- content -->
+
+
+
+                <!-- Footer Start -->
+<!--                <footer class="footer">-->
+<!--                    <div class="container-fluid">-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-12">-->
+<!--                                2021 &copy; ATSL. All Rights Reserved. Crafted with <i class='uil uil-heart text-danger font-size-12'></i> by <a href="https://coderthemes.com" target="_blank">ATSLthemes</a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </footer>-->
+                <!-- end Footer -->
+
+            </div>
+{% endblock content %}
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
+
+
+{% block script %}
+ <!-- Vendor js -->
+        <script src="{% static '/dashboard/js/vendor.min.js' %}"></script>
+
+        <!-- optional plugins -->
+        <script src="{% static '/dashboard/libs/moment/moment.min.js' %}"></script>
+        <script src="{% static '/dashboard/libs/apexcharts/apexcharts.min.js' %}"></script>
+        <script src="{% static '/dashboard/libs/flatpickr/flatpickr.min.js' %}"></script>
+
+        <!-- page js -->
+        <script src="{% static '/dashboard/js/pages/dashboard.init.js' %}"></script>
+
+        <!-- App js -->
+        <script src="{% static '/dashboard/js/app.min.js' %}"></script>
+        <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>  
+    <script src =  "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    {% for i in distributor %}
+    <script>
+       
+        
+    //     countobs=0
+    //     $('#device').click(function(){
+    //       countobs++
+    //     alert('success')
+    //     $.ajax({
+    //         url: "/api/listview",
+    //         type: 'POST',
+    //            cache: false,
+    //         contentType: false,
+    //         processData: false,
+            
+
+    //         beforeSend: function() {
+              
+             
+    //         },
+
+    //            //data: { casename: caseName,filename: filenames} ,                   
+    //           success: function(result){
+    //            msg=result.msg
+               
+    //            sv=result.obsr
+    //            sl=result.sl
+    //            model=result.model
+    //            man=result.man
+    //            room=result.room
+    //            list=result.list
+
+               
+               
+
+    //            if(countobs==1){
+    //             var newhead=$('<tr><th>'+' <h4 class="headt">'+'<B>Sl No</B>'+'</h4>'+'</th>'+'<th>'+'<h4 class="headt">'+'<B>Model No</B>'+'</h4>'+'</th>'+'<th>'+'<h4 class="headt">'+'<B>Manufact date</B>'+'</h4>'+'</th></tr>')
+    //             $('#test thead').append(newhead);
+    //     //   for(h=1;h<=list.length;h++){
+    //     for(i=0;i<list.length;i++){
+    //         var table1=$('#test tr').find("td").eq(i).text();
+            
+                
+            
+            
+
+    //         //for(j=0;j<obsr.length;j++){
+    //         if(list[i]!=table1){
+                    
+    //                 var newop=$('<tr><td>'+'<h4 class="bodyt">'+'<a href="#" id="obsname"data-toggle="modal" data-target="#myModal7">'+sl[i]+'</a>'+'</h4>'+'</td>'+'<td>'+'<h4 class="bodyt">'+model[i]+'</td>'+'<td>'+'<h4 class="bodyt">'+man[i]+'</td></tr>');
+                        
+    //                     $('#test tbody').append(newop);}
+                
+    //         }
+             
+           
+               
+    //           }
+    //         }
+    //     });
+    // });
+    
+    
+    $('#{{i.Distributor_Id}}').click(function(){
+        var slno=$(this).text();
+        alert(slno)
+        var sln=JSON.stringify(slno)
+        $.ajax({
+            url: "/accounts/disthome",
+            type: 'POST',
+            data: {slno:sln},
+             
+
+            beforeSend: function() {
+              
+             
+            },
+
+               //data: { casename: caseName,filename: filenames} ,                   
+              success: function(result){
+               msg=result.msg
+               location.href="/accounts/distedit"
+            }
+
+        });
+    });
+    
+
+    $('#editends').submit(function(){
+            alert('submitted')
+            e.preventDefault();
+      $form = $(this)
+        var formData = new FormData(this);
+        console.log(formData)
+    
+        $.ajax({
+            url: "/accounts/addDevice",
+            type: 'POST',
+            data: formData,
+               cache: false,
+            contentType: false,
+            processData: false,
+            
+
+            beforeSend: function() {
+              
+             
+            },
+
+               //data: { casename: caseName,filename: filenames} ,                   
+              success: function(result){
+               msg=result.msg
+               
+               sv=result.obsr
+               sl=result.sl
+               model=result.model
+               man=result.man
+               room=result.room
+               list=result.list}
+
+               
+               
+
+        
+        });
+   
+       
+        });
+        
+    </script>
+    {% endfor %}
+{% endblock script %}

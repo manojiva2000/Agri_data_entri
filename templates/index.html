@@ -1,0 +1,1133 @@
+<Doctype! html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEW</title>
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body data-gr-c-s-loaded="true" style="">
+    <div class="wrapper">
+        <div class="index-box">
+          <div class="index-table">
+            <div class="index-box1">
+              <p>Tables</p>
+              <div class="section4" style="overflow-y: scroll;position:relative;">
+                    <div id = "table_list_section">
+
+                      
+
+                    </div>
+                  
+              </div>
+              
+            </div>
+            
+            <div class="index-box2">
+                <div class="index-table1">                
+                    <div class="section1">
+                        <p>
+                      <a href="#" id="section1">Create Table</a>
+                      </p>
+                    </div>
+                    <div class="section2">
+                        <p>
+                            <a href="#" id="section2">Query Section
+                            </a>
+                            </p>
+                      </div>
+                      
+                  </div>
+
+                   
+                  <div class="input2" id="input2">
+                    
+                  <div class="index-table1">                
+                     
+                    </div>
+                    <div class="input2">
+                      <form id ="query_form"method="post">
+                        {%csrf_token%}
+                      <input type="text" id="txtSearch" name="query" class="form-control">
+                      <input type="submit" class="form-control1" style="float: right; width: 10em;"value="SUBMIT">
+                      </form>
+                    </div>
+                    
+                    <div class="download" style="position: absolute;">
+                      <div>
+                      <img href="#" src="/static/images/download-arrow.png" height="15px" width="15px" style="position:absolute; margin-left: 22em; margin-top: -5px;"id="download_file">
+                    </div>
+                    
+                    <div>
+                       <img href="#" src="/static/images/refresh.png" height="15px" width="15px" style="position:absolute; margin-top: -5px; margin-left: 20em; "id = "refresh_file">
+                    </div>
+                    </div>
+              
+                    <div class="section31"style="overflow-y: scroll; overflow-x: scroll; position:absolute;">
+                     
+                     
+                     
+{% comment %}                      
+                      <div class="download" style="position: absolute;">
+                        <div>
+                        <img href="#" src="/static/images/download-arrow.png" height="15px" width="15px" style="position:absolute; margin-left: 22em; margin-top: -5px;">
+                      </div>
+                      
+                      <div>
+                         <img href="#" src="/static/images/refresh.png" height="15px" width="15px" style="position:absolute; margin-top: -5px; margin-left: 20em; ">
+                      </div>
+                      </div> {% endcomment %}
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                      <table id ="table_head"class="table_head">
+                        <thead>
+                          <tr id = "row_head">
+
+                          </tr>
+                        </thead>
+                        <tbody>
+                          
+                        </tbody>
+                      </table>
+                     
+                      <div class="lds-spinner_table"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                   
+                    </div>
+              
+                    </div>
+
+                   
+
+
+
+
+
+
+
+
+
+                  <div class="input1">
+                    <div class="form-group" style="width: 60px;">
+                      <form method="POST"id="form_sub">
+                       {% csrf_token %}
+                        <input type="file" id="csv_file" accept="csv" style="padding: 20px;"name="csv">
+                        <label for="file">
+                        </label>
+                        </div>  
+                    <input type="SUBMIT" class="form-control1" style="float: right; width: 10em; margin-top: -4em;"value="LOAD">
+                  </form>
+                  <div class="buffer_class">
+                    <div class="load">loading..</div>
+                  <div id="loader"class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
+                  </div>
+                  
+
+
+
+         
+
+
+                  <div class="section3" style="overflow-x: scroll;
+                  overflow-y: scroll;">
+                         <div class="form-group" style="margin-right: 11em;">
+                            <label id="number-label" for="number"
+                              >Table_Name<span class="clue"></span></label>
+                            <input style="margin-left: 2.3em; width: 200px;"
+                            type="text"
+                            name="name"
+                            id="table_name"
+                            maxlength="10"
+                            class="form-control"
+                            required/>
+                          </div>
+                          
+                          <div class="btn1" style="">
+                            <button id= "cancel_bt" >Cancel</button>
+                        </div>
+
+                         <div class="btn2" style="">
+                             <button id="create">Create Table</button>
+                        </div>
+                          <div class="progress_class">
+                            <div class ="insert_progress">Inserting Data....</div>
+                          <div class="Progress_Status"> 
+                            <div class="myprogressBar">0%</div> 
+                          </div> 
+                        </div>
+                        <div class="form-group"id="table_section" >
+                        
+                          {% comment %}  <label for="lname" style="margin-right: 60px;">Sample</label>
+                            <select id="dropdown" name="role" class="form-control" style="float: right,20px; width: 200px; margin-right: 80px;" required>
+                                <option disabled selected value>Select </option>
+                                
+                                <option value="job">Select</option>
+                                <option value="learner">Select</option>
+                                <option value="learner">Select</option>
+                      
+                              </select>
+                        
+                  
+                        </div>
+                  
+                         <div class="form-group" >
+                            <label for="lname" style="margin-right: 60px;">Sample</label>
+                            <select id="dropdown" name="role" class="form-control" style="float: right,20px; width: 200px; margin-right: 80px;" required>
+                                <option disabled selected value>Select </option>
+                                
+                                <option value="job">Select</option>
+                                <option value="learner">Select</option>
+                                <option value="learner">Select</option>
+                      
+                              </select>
+                  
+                        </div>
+                  
+                        <div class="form-group" >
+                            <label for="lname" style="margin-right: 60px;">Sample</label>
+                            <select id="dropdown" name="role" class="form-control" style="float: right,20px; width: 200px; margin-right: 80px;" required>
+                                <option disabled selected value>Select </option>
+                                
+                                <option value="job">Select</option>
+                                <option value="learner">Select</option>
+                                <option value="learner">Select</option>
+                      
+                              </select>  {% endcomment %}
+                            
+                  
+                        
+                  
+                                    
+                      
+
+
+
+
+
+
+{% comment %} 
+                                <div class="btn1" style="">
+                                    <button >Cancel</button>
+                                </div>
+
+                                 <div class="btn2" style=""id="create">
+                                     <button >Create Table</button>
+                                </div> {% endcomment %}
+                    </div>
+                  </div>
+                  <div id="popup1" class="overlay">
+                    <div class="popup">
+                      <button class ="insert_class"id="insert">Insert Data</button>
+                      <button class ="cancel_class"id="Cancel">Cancel</button>
+
+                      <a class="close" href="#"id = "closepopup">x</a>
+                      
+                    </div>
+                  </div>
+            </div>
+            
+            
+            
+
+            
+          </div>
+
+          
+          
+        
+        </div>
+        </div>
+        <div id="popup2" class="section9_overlay">
+
+          <div class="section9" style="background: white;">
+            <form method="POST"id="form_sub_insert">
+              {% csrf_token %}
+               <input type="file" id="file" accept="csv" style="padding: 20px;"name="csv">
+               <label for="file">
+               </label>
+               </div>  
+           <input type="SUBMIT" class="form-control1" style="    margin-left: 37em;margin-top: -37em; width: 10em;"value="LOAD">
+         </form>
+         
+            
+            <div>
+              
+            </div>
+           
+            
+            <div class="section7" style="overflow-y: auto;">
+        
+              <div class="progress_class_insert">
+                <div class ="insert_only_progress">Inserting Data....</div>
+              <div class="Progress_Status_insert"> 
+                <div class="myprogressBar_insert">0%</div> 
+              </div> 
+            </div>
+            
+            
+              <!--<div class="section3a">
+                <p style="margin-left: -1.5em; margin-top: 2.7px;">Column</p>
+                <img href="#" src="/static/images/delete.png" height="15px" width="15px" style="margin-left:11em; margin-top: -1.9em;">
+
+                
+              </div>-->
+              
+              
+              <div style="position: absolute ;margin-top: 13.8px; margin-left: 8em;"id="sec1">
+                
+                
+              </div>
+            
+           
+              </div>
+              
+              
+              
+              
+              <div class="blockbtn" style="position: fixed; margin-top: -2em;">
+                <button style="margin-left: 62em; margin-top: -1em"id="insert_only">Insert</button>
+                <button style="margin-top: -15em;margin-left: 1em; "id ="cancel_popup2">Cancel</button>
+              </div>
+              
+              
+              
+              
+            
+              </div>
+               </div>
+          </div>
+          </div>  
+        </div>
+  </div>
+  <div class="buffer_class_insert">
+    <div class="load">loading..</div>
+  <div id="loader"class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
+  </div>
+
+       
+
+       
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="/static/js/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script>
+          //setInterval( table_list, 3000);
+          table_list()
+          if (sessionStorage.getItem('hideDivOnLoad')) {
+                              
+            $("#download_file").hide()  
+            $("#refresh_file").hide()       
+            $('.section1').css('background-color', 'white');
+            $('.section2').css('background-color', 'rgb(174 171 205)');
+            $(".input1").hide();
+            $(".SECTION3").hide();
+            $(".input2").show();
+            $(".buffer_class").hide();
+            $(".buffer_class_insert").hide();
+            $(".progress_class").hide();
+            $(".progress_class_insert").hide();
+            $('.lds-spinner_table').hide();
+            sessionStorage.removeItem('hideDivOnLoad');
+            }
+            else{
+              $("#download_file").hide() 
+              $("#refresh_file").hide() 
+            $(".input2").hide();
+            $(".section3").hide();
+            $(".buffer_class").hide();
+            $('.section1').css('background-color', 'rgb(174 171 205)');
+            $(".buffer_class_insert").hide();
+            $(".progress_class").hide();
+            $(".progress_class_insert").hide();
+            $('.lds-spinner_table').hide();
+            }
+
+            $(".section2").click(function(){
+              //$('#popup2').addClass('section9_overlay_popup');
+              $('.section1').css('background-color', 'white');
+              $(this).css('background-color', 'rgb(174 171 205)');
+                $(".input1").hide();
+                $(".SECTION3").hide();
+                $(".input2").show();
+
+            })
+
+            $(".section1").click(function(){
+              $('.section2').css('background-color', 'white');
+              $(this).css('background-color', 'rgb(174 171 205)');
+                $(".input1").show();
+                //$('.input1').hide()
+                $('.form-group').show();
+                $(".input2").hide();
+            })
+
+          $("#form_sub").submit(function(e){
+            $(".section3").hide();
+            $('#table_section').empty();
+            
+            //alert('done')
+            e.preventDefault();
+                  $form = $(this)
+                    var formData = new FormData(this);
+                    
+                    
+                    if ($('#csv_file').val()==''){
+                      alert('Please upload file')
+                      $(".section3").hide();
+                      $('#table_section').empty()
+                    }
+                    else{
+                      $('.buffer_class').show()
+                    formData.append('type','read')
+                    
+                    
+
+                    $.ajax({
+                      url: "/file_upload",
+                      type: 'POST',
+                      data: formData,
+                         cache: false,
+                      contentType: false,
+                      processData: false,
+                     
+          
+                         //data: { casename: caseName,filename: filenames} ,                   
+                        success: function(result){  
+                          //alert('kkkk')             
+                         column_list = result.list
+                         //alert(column_list.length)
+                        len_list = column_list.length
+                        csv_data = result.data
+                        console.log(csv_data)
+                         //alert('success')
+                         setTimeout(buffer_load,300);
+                         $('#form_sub')[0].reset();
+
+                         $(".section3").show();
+                         for(i=0;i<len_list;i++){
+                         var data_name =$('<div id = "sec'+column_list[i]+'"><label for="lname" style="float:right; margin-right: 35em;margin-top:20px; position:relative;"  id="label'+column_list[i]+'">'+column_list[i]+'</label><select id="dropdown'+column_list[i]+'" name="role" class="form-control" style="float: left,20px; width: 200px; margin-right: 1em;margin-top:-25px; position: relative;" required><option value="Varchar">Varchar</option><option value="Int">Int</option><option value="Float">Float</option><option value="datetime">datetime</option></select><img href="#" src="/static/images/delete.png" height="20px" width="20px" id="delete___'+column_list[i]+'"style="margin-left: -0.7em;position: relative;margin-top: -1.7em;"></div>');
+
+
+                
+                        
+
+                        $('#table_section').append(data_name);
+
+                         }
+                         for(i=0;i<column_list.length;i++){
+                            
+                            
+                          $('#delete___'+column_list[i]).click(function(){
+                            //alert('llllll')
+                            var del_id = this.id
+                            var del = del_id.split('___');
+                            console.log(del_id)
+                            $('#sec'+del[1]).remove();
+                            //$('#dropdown'+del[1]).remove();
+                            $(this).remove();
+                          })
+                        }
+                        
+          $('.btn1').click(function(){
+            $(".section3").hide();
+            $('#table_section').empty()
+            $('#form_sub')[0].reset();
+
+          })              
+          
+          
+         
+          $("#create").click(function(e){
+
+            var form_json = {}
+            var table = $('#table_name').val();
+            form_json['table_name']=table
+            for(i=0;i<len_list;i++){
+              //alert(len_list)
+              var label = 'label'+column_list[i]
+              var type = $("select#dropdown"+column_list[i]).val();
+              var col_name = $("#"+label).html()
+              
+              //var i = $("select#dropdown"+i).val()
+              //alert(n+':'+p)
+              form_json[col_name]=type.toString()
+
+              }
+              console.log(form_json)
+              
+              
+              $.ajax({
+                url: "/tables",
+                type: 'POST',
+                data: form_json,
+                 
+               
+    
+                   //data: { casename: caseName,filename: filenames} ,                   
+                  success: function(result){   
+                    mesg=result.msg
+                    if (result.msg == 'success'){
+                    table_name = result.table_name
+                    header_list = result.header_list
+                    var data_name =$('<p id ="'+table_name+'">'+table_name+'<div><button style="float: right; margin-top: -2.7em;margin-right:31px;"id="drop_down'+table_name+'">...</button><div class="dropContainer"id="dropContainer'+table_name+'"><ul><li id ="delete'+table_name+'">Delete</li><li id ="insert'+table_name+'">Insert</li></ul></div></div></p>');
+
+
+   
+           
+
+                    $('#table_list_section').prepend(data_name);
+
+                    
+                    $('#popup1').addClass('overlay_popup');
+                    
+                    var dropdownElem = $('#drop_down' + table_name);
+              dropdownElem.data('table', table_name);
+              $(dropdownElem).hover(function(){
+                var table_id = $(this).data('table');
+                var dropContainer = $('#dropContainer'+table_id);
+                dropContainer.data('table',table_id)
+                
+                $(dropContainer).removeClass('dropContainer');
+                $(dropContainer).addClass('dropContainer_overlay');
+    
+               },function(){
+                var table_id = $(this).data('table');
+                var dropContainer = $('#dropContainer'+table_id);
+                dropContainer.data('table',table_id)
+                $(dropContainer).removeClass('dropContainer_overlay');
+                $(dropContainer).addClass('dropContainer');
+                console.log('oooop')
+                $(dropContainer).on("mouseover", function() {
+                  var table_id = $(this).data('table');
+
+                  // Mouse is over the div
+                  console.log("Mouse is over the div");
+                  $(dropContainer).removeClass('dropContainer');
+                  $(dropContainer).addClass('dropContainer_overlay');
+                });
+                $(dropContainer).on("mouseout", function() {
+                  var table_id = $(this).data('table');
+                  $(dropContainer).removeClass('dropContainer_overlay');
+                $(dropContainer).addClass('dropContainer');
+                  console.log("Mouse is over the div");
+                });
+                
+               })
+               var element = $('#insert'+table_name);
+               element.data('table',table_name)
+
+               $(element).click(function(){
+                var table_name = $(this).data('table')
+                //alert(table_name)
+                localStorage.setItem("table_name", table_name);
+                $('#popup2').addClass('section9_overlay_popup');
+              });
+              var del_element =$('#delete'+table_name);
+              del_element.data('table',table_name)
+              $(del_element).click(function(){
+                
+                var table_list_name = {}
+                var table_name = $(this).data('table')
+                if(confirm('Do you want to delete '+table_name)){
+                  $(".buffer_class").show();
+                  
+                table_list_name['table_name'] = table_name.toString()
+                $.ajax({
+                  url: "/delete_data",
+                  type: 'POST',
+                  data: table_list_name,
+                   
+                 
+      
+                     //data: { casename: caseName,filename: filenames} ,                   
+                    success: function(result){ 
+                      
+                     //alert(result.message)
+                     table_list =result.table_list
+                     console.log(table_list)
+                     $('#'+table_name).remove();
+                     setTimeout(buffer_load,200)
+                     
+                    
+                    
+                     
+                    },
+                  });
+                }
+                else{
+                  console.log('cancelled')
+                }
+              })
+                    $('.cancel_class').click(function(){
+                     // alert('clicked')
+                      $('#popup1').removeClass('overlay_popup');
+
+                    })
+                    $('.close').click(function(){
+                      // alert('clicked')
+                       $('#popup1').removeClass('overlay_popup');
+ 
+                     })
+                    $('#insert').click(function(){
+                      $('#popup1').hide()
+                      $('.progress_class').show()
+                      $('.input1').hide()
+                      $('.form-group').hide();
+                      $('.btn1').hide();
+                      $('.btn2').hide()
+                      //alert(csv_data.type)
+                      //alert(csv_data)
+                      csv = JSON.stringify(csv_data)
+                      list_data ={}
+                      list_data['csv_data']=csv
+                      list_data['header_list']=JSON.stringify(header_list)
+                      list_data['table_name']=table_name
+                      
+                      $.ajax({
+                        url: "/insert_data",
+                        type: 'POST',
+                        data: list_data,
+                         
+                       
+            
+                           //data: { casename: caseName,filename: filenames} ,                   
+                          success: function(result){  
+                            msg = result.msg 
+                            
+                            //alert(msg)
+                            sessionStorage.setItem('hideDivOnLoad', 'true');
+                
+                            checkStatus()
+                            
+                            
+                            
+
+                          },
+                          
+
+                        })
+                        
+
+                    })
+
+                  }
+                  else{
+                    Swal.fire({
+                      title: 'Table Creation failed',
+                      text: mesg,
+                      icon: 'info'
+                  });
+                  }
+                  },            
+                 
+
+                   })
+          
+        });
+      },
+      })
+    }
+    
+    })
+
+    function load(){
+      location.reload();
+      
+        
+
+    }
+   
+   
+
+    function table_list(){
+      $.ajax({
+        url: "/table_names",
+        type: 'POST',
+        
+         
+       
+
+           //data: { casename: caseName,filename: filenames} ,                   
+          success: function(result){   
+           table_list = result.table_list
+          // alert(table_list.length)
+           //alert(table_list)
+           for(i=0;i<table_list.length;i++){
+           // alert(table_list[i])
+            var data_name =$('<p id ="'+table_list[i]+'">'+table_list[i]+'<div><button style="float: right; margin-top: -2.7em;margin-right:31px;"id="drop_down'+table_list[i]+'">...</button><div class="dropContainer"id="dropContainer'+table_list[i]+'"><ul><li id ="delete'+table_list[i]+'">Delete</li><li id ="insert'+table_list[i]+'">Insert</li></ul></div></div></p>');
+
+
+   
+           
+
+           $('#table_list_section').prepend(data_name);
+          
+          
+
+            }
+            for(i=0;i<table_list.length;i++){ 
+              var dropdownElem = $('#drop_down' + table_list[i]);
+              dropdownElem.data('table', table_list[i]);
+              $(dropdownElem).hover(function(){
+                var table_id = $(this).data('table');
+                var dropContainer = $('#dropContainer'+table_id);
+                dropContainer.data('table',table_id)
+                
+                $(dropContainer).removeClass('dropContainer');
+                $(dropContainer).addClass('dropContainer_overlay');
+    
+               },function(){
+                var table_id = $(this).data('table');
+                var dropContainer = $('#dropContainer'+table_id);
+                dropContainer.data('table',table_id)
+                $(dropContainer).removeClass('dropContainer_overlay');
+                $(dropContainer).addClass('dropContainer');
+                console.log('oooop')
+                $(dropContainer).on("mouseover", function() {
+                  var table_id = $(this).data('table');
+
+                  // Mouse is over the div
+                  console.log("Mouse is over the div");
+                  $(dropContainer).removeClass('dropContainer');
+                  $(dropContainer).addClass('dropContainer_overlay');
+                });
+                $(dropContainer).on("mouseout", function() {
+                  var table_id = $(this).data('table');
+                  $(dropContainer).removeClass('dropContainer_overlay');
+                $(dropContainer).addClass('dropContainer');
+                  console.log("Mouse is over the div");
+                });
+                
+               })
+               var element = $('#insert'+table_list[i]);
+               element.data('table',table_list[i])
+
+               $(element).click(function(){
+                var table_name = $(this).data('table')
+                //alert(table_name)
+                localStorage.setItem("table_name", table_name);
+                $('#popup2').addClass('section9_overlay_popup');
+              });
+              var del_element =$('#delete'+table_list[i]);
+              del_element.data('table',table_list[i])
+              $(del_element).click(function(){
+                
+                var table_list_name = {}
+                var table_name = $(this).data('table')
+                if(confirm('Do you want to delete '+table_name)){
+                  $(".buffer_class").show();
+                  
+                table_list_name['table_name'] = table_name.toString()
+                $.ajax({
+                  url: "/delete_data",
+                  type: 'POST',
+                  data: table_list_name,
+                   
+                 
+      
+                     //data: { casename: caseName,filename: filenames} ,                   
+                    success: function(result){ 
+                      
+                     //alert(result.message)
+                     table_list =result.table_list
+                     console.log(table_list)
+                     $('#'+table_name).remove();
+                     setTimeout(buffer_load,200)
+                     
+                    
+                    
+                     
+                    },
+                  });
+                }
+                else{
+                  console.log('cancelled')
+                }
+              })
+              
+            }
+          },            
+         
+
+        })
+ }
+                
+              
+            $('#cancel_popup2').click(function(){
+              $('#popup2').removeClass('section9_overlay_popup');
+              $('#popup2').addClass('section9_overlay');
+            })
+            
+
+
+
+    
+     function buffer_load(){
+    $(".buffer_class").hide();}
+    function buffer_load_insert(){
+      $(".buffer_class_insert").hide();}
+
+    //query_form
+
+  $('#query_form').submit(function(e){
+    $('#table_head thead #row_head').empty();
+    $('#table_head tbody').empty();
+
+    $('.lds-spinner_table').show();
+    e.preventDefault();
+    $form = $(this)
+      var formData = new FormData(this);
+      if ($('#txtSearch').val() ==''){
+        Swal.fire({
+          title: 'Query Input Error',
+          text: '"Please Insert Query"',
+          icon: 'info'
+      });
+      $('.lds-spinner_table').hide();
+      }
+      else{
+      
+
+      $.ajax({
+        url: "/queries",
+        type: 'POST',
+        data: formData,
+           cache: false,
+        contentType: false,
+        processData: false,
+       
+
+           //data: { casename: caseName,filename: filenames} ,                   
+          success: function(result){  
+            if(result.msg == 'success'){
+            //alert('retrieved')
+           headers = result.headers
+           df = result.df
+           table_name = result.table_name
+          // alert(result.type)
+          var append_new1 =""
+           for (i=0;i<headers.length;i++){
+            //console.log(df[i])
+            var append_new = $('<th>'+headers[i]+'</th>');
+           
+           $('#table_head thead #row_head').append(append_new);
+          
+           
+           }
+           for(j=0;j<df.length;j++){
+            //console.log(df[j][headers[0]])
+            for(k=0;k<headers.length;k++){
+             append_new1 += '<td>'+df[j][headers[k]]+'</td>'
+            }
+             //console.log(append_new1)
+           $('#table_head tbody').append($('<tr>'+append_new1+'</tr>'));
+           append_new1 =""
+           
+            
+           }
+           $('.lds-spinner_table').hide();
+           $("#download_file").show()  
+           $("#refresh_file").show() 
+           $("#download_file").click(function(){
+            csv = JSON.stringify(df)
+            list_data ={}
+            list_data['table_name']=table_name
+            list_data['csv_data']=csv
+            $.ajax({
+              url: "/download_csv",
+              type: 'POST',
+              data: list_data,
+              
+             
+      
+                 //data: { casename: caseName,filename: filenames} ,                   
+                success: function(result){
+                  //alert('ok')
+                  var blob = new Blob([result]);
+                  var link = document.createElement('a');
+                  link.href = window.URL.createObjectURL(blob);
+                  link.download = table_name+'_data.csv';
+                  link.click();
+              },
+              error: function () {
+                  console.log('Failed to download the CSV file.');
+              }
+              });
+           
+           })
+          
+          }
+          else{
+            $('.lds-spinner_table').hide();
+            $('#table_head thead #row_head').empty();
+            $('#table_head tbody').empty();
+             Swal.fire({
+                      title: 'Query Error',
+                      text: result.message,
+                      icon: 'info'
+                  });
+          }
+           
+          },          
+           
+  })
+}
+})
+$('#refresh_file').click(function(){
+  $('#table_head thead #row_head').empty();
+  $('#table_head tbody').empty();
+  $('#txtSearch').val('');
+  $("#download_file").hide()  
+  $("#refresh_file").hide() 
+ })
+function checkStatus(){
+  $.ajax({
+    url: "/get_start",
+    type: 'POST',
+    
+     
+
+       //data: { casename: caseName,filename: filenames} ,                   
+      success: function(result){  
+        //alert(result.progress)
+        if(result.progress<=100){
+         // alert(result.progress)
+         $('#popup1').removeClass('overlay_popup');
+        // $('#popup2').removeClass('section9_overlay_popup');
+              $('#popup2').addClass('section9_overlay');
+         $('.progress_class').show();
+         var elem = $(".myprogressBar")
+         elem.css('width',result.progress+'%');
+         elem.html(result.progress+'%');
+
+        setTimeout(checkStatus, 2000);}
+        else if(result.progress>100) {
+          //alert(result.progress)
+         
+          
+          $('#popup2').removeClass('section9_overlay_popup');
+          $('.progress_class').show();
+                $('.myprogressBar').css('width','100%');
+                $('.myprogressBar').html('100%');
+                $('.insert_progress').html('Data inserted.');
+                setTimeout(hide_progress ,3000);
+                setTimeout(load,2000);
+
+        }
+        else{
+          alert(result.progress)
+        }
+       
+         
+         
+      },          
+       
+})
+}
+function checkStatus_insertonly(){
+  $.ajax({
+    url: "/get_start",
+    type: 'POST',
+    
+     
+
+       //data: { casename: caseName,filename: filenames} ,                   
+      success: function(result){  
+        //alert(result.progress)
+        if(result.progress<=100){
+         // alert(result.progress)
+         //$('#popup1').removeClass('overlay_popup');
+        // $('#popup2').removeClass('section9_overlay_popup');
+              //$('#popup2').addClass('section9_overlay');
+         $('.progress_class_insert').show();
+         var elem = $(".myprogressBar_insert")
+         elem.css('width',result.progress+'%');
+         elem.html(result.progress+'%');
+
+        setTimeout(checkStatus_insertonly, 2000);}
+        else if(result.progress>100) {
+          //alert(result.progress)
+         
+          
+          //$('#popup2').removeClass('section9_overlay_popup');
+          $('.progress_class_insert').show();
+                $('.myprogressBar_insert').css('width','100%');
+                $('.myprogressBar_insert').html('100%');
+                $('.insert_only_progress').html('Data inserted.');
+                setTimeout(hide_progress ,3000);
+                setTimeout(load,2000);
+
+        }
+        else{
+          alert(result.progress)
+        }
+       
+         
+         
+      },          
+       
+})
+}
+function hide_progress(){
+$('.progress_class_insert').hide()
+$('#popup2').hide()
+$(".input1").hide();
+  $(".SECTION3").hide();
+  $(".input2").show();
+  $('.section1').css('background-color', 'white');
+  $('.section2').css('background-color', 'rgb(174 171 205)');
+}
+$("#form_sub_insert").submit(function(e){
+  $('#sec1').empty();
+  $('.buffer_class_insert').show()
+  //alert('done')
+  e.preventDefault();
+        $form = $(this)
+          var formData = new FormData(this);
+          table_name = localStorage.getItem('table_name')
+          formData.append('type','read_insert')
+          formData.append('table_name',table_name)
+
+          $.ajax({
+            url: "/file_upload",
+            type: 'POST',
+            data: formData,
+               cache: false,
+            contentType: false,
+            processData: false,
+           
+
+               //data: { casename: caseName,filename: filenames} ,                   
+              success: function(result){  
+                //alert('kkkk')             
+               column_list = result.list
+               list_of_columns = result.column_list
+               csv_data = result.csv_data
+               var ins_elem = $('#insert_only');
+               ins_elem.data('csv_data',JSON.stringify(csv_data));
+               $('#form_sub_insert')[0].reset();
+               //alert(column_list.length)
+               //var c = Math.floor(column_list.length/2)
+              //len_list = column_list.splice(0,c+1)
+              //console.log(len_list,column_list,)
+              csv_data = result.data
+              console.log(csv_data)
+               //alert('success')
+               setTimeout(buffer_load_insert,300);
+               
+               $(".section7").show();
+               //alert(column_list)
+               len_list = []
+               for(i=0;i<column_list.length;i++){
+                var exists = $.inArray(column_list[i],list_of_columns);
+                
+                if (exists!==-1){
+                 
+                //alert(i)
+               var data_name =$('<div class="section3a"id="sec1_3a'+column_list[i]+'" ><img src="/static/images/tick.png"style="height: 22px;float: left;margin-top: 2px;"><label style="margin-top: 3em;"id="lab'+column_list[i]+'">'+column_list[i]+'</label></div><div style="position: relative; margin-left: 12.3em;"><img href="#" src="/static/images/delete.png" height="20px" width="20px" id="delete___'+column_list[i]+'"style="margin-left: 12.3em;position: relative;margin-top: -1.7em;"></div>');}
+               else{
+                var data_name =$('<div class="section3a"id="sec1_3a'+column_list[i]+'" ><img src="/static/images/cross.png"style="height: 22px;float: left;margin-top: 2px;"><label style="margin-top: 1.5em;"id="lab'+column_list[i]+'">'+column_list[i]+'</label></div><div style="position: relative; margin-left: 12.3em;"><img href="#" src="/static/images/delete.png" height="20px" width="20px" id="delete___'+column_list[i]+'"style="margin-left: 12.3em;position: relative;margin-top: -1.7em;"></div>');}
+                $('#sec1').append(data_name);
+               
+              
+          
+              
+              
+
+               
+              
+               
+      
+              
+
+              //$('#sec1').append(data_name1);
+              
+            }
+            
+            for(i=0;i<column_list.length;i++){
+            
+            
+                  $('#delete___'+column_list[i]).click(function(){
+                    //alert('llllll')
+                    var del_id = this.id
+                    var del = del_id.split('___');
+                    console.log(del_id)
+                    $('#sec1_3a'+del[1]).remove();
+                    $(this).remove();
+                  })
+                }
+              $(ins_elem).click(function(){
+                //$('#popup2').hide()
+                $('.progress_class_insert').show()
+                $('#sec1').hide()
+                $('#form_sub_insert').hide();
+                $('.btn1').hide();
+                $('.btn2').hide()
+                var columns = []
+            var columns_dict = {}
+                for(i=0;i<column_list.length;i++){
+                columns.push($('#lab'+column_list[i]).html())
+                }
+                console.log(columns)
+                csv_data = $(this).data('csv_data');
+                columns_dict['csv_data']=csv_data
+                columns_dict['columns']=JSON.stringify(columns)
+                table_name1 = localStorage.getItem('table_name')
+                columns_dict['table_name']=table_name1
+                
+                $.ajax({
+                  url: "/insert_only",
+                  type: 'POST',
+                  data: columns_dict,
+                  
+                 
+      
+                     //data: { casename: caseName,filename: filenames} ,                   
+                    success: function(result){
+                      msg = result.msg 
+            //alert(msg)
+            sessionStorage.setItem('hideDivOnLoad', 'true');
+            checkStatus_insertonly()
+                    },
+                  })
+                
+              })
+            
+            
+               //}
+               //for(i=0;i<len_list.length;i++){
+                //var exists = $.inArray(len_list[i],list_of_columns);
+                //if (exists!==-1){
+                ////alert(i)
+               //var data_name =$('<div class="section3a"id="sec1_3a'+len_list[i]+'" ><img src="/static/images/tick.png"style="height: 22px;float: left;margin-top: 2px;><label style="margin-top: 1.5em;">'+len_list[i]+'</label></div><div style="position: static; margin-left: 12.3em;"><img href="#" src="/static/images/delete.png" height="20px" width="20px" id="delete+'+len_list[i]+'"style="margin-left: 12.3em;position: relative;margin-top: -1.7em;"></div>');}
+               //else{
+                //var data_name =$('<div class="section3a"id="sec1_3a'+len_list[i]+'" ><img src="/static/images/cross.png"style="height: 22px;float: left;margin-top: 2px;"><label style="margin-top: 1.5em;">'+len_list[i]+'</label></div><div style="position: static; margin-left: 12.3em;"><img href="#" src="/static/images/delete.png" height="20px" width="20px" id="delete+'+len_list[i]+'"style="margin-left: 12.3em;position: relative;margin-top: -1.7em;"></div>');}
+                //alert(i)
+               //var data_name =$('<div class="section3a"id="sec1_3a" ><label style="margin-top: 0.5em;">'+len_list[i]+'</label></div><div style="position: static; margin-left: 12.3em;"><img href="#" src="/static/images/delete.png" height="15px" width="15px" id="delete'+len_list[i]+'"style="margin-left: 9.6em;position: relative;margin-top: -1.7em;"></div>');
+
+
+      
+              
+
+              //$('#sec0').append(data_name);
+
+               //}
+                 
+                
+               },
+              });
+            });
+
+        </script>
+        
+</body>
+
+</html>
